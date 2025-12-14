@@ -34,6 +34,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    margin-top: 10px;
   }
 
   button:hover {
@@ -88,7 +89,6 @@
   }
 
   .reset-btn {
-    margin-top: 20px;
     background: #ff4b2b;
     color: #fff;
   }
@@ -129,7 +129,6 @@
   const months = ["February", "March", "April", "May", "June", "July", "August", "September", "October"];
 
   let names = [...namesList];
-  let history = [];
   let monthIndex = 0;
 
   function pickChit() {
@@ -143,9 +142,8 @@
     const index = Math.floor(Math.random() * names.length);
     const picked = names.splice(index, 1)[0];
     const currentMonth = months[monthIndex];
-    history.push({ month: currentMonth, name: picked });
 
-    // Show result with animation
+    // Show picked result
     const resultDiv = document.getElementById("result");
     resultDiv.innerText = `${currentMonth}: ${picked} gets $9,000`;
     resultDiv.classList.remove("show");
@@ -158,7 +156,7 @@
     li.innerText = `${currentMonth}: ${picked}`;
     historyList.appendChild(li);
 
-    // Confetti effect
+    // Confetti animation
     confetti({
       particleCount: 100,
       spread: 70,
@@ -170,7 +168,6 @@
 
   function resetPicker() {
     names = [...namesList];
-    history = [];
     monthIndex = 0;
     document.getElementById("history").innerHTML = "";
     const resultDiv = document.getElementById("result");
