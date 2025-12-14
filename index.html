@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chit Picker</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+        padding: 30px;
+      }
+      h1 {
+        text-align: center;
+      }
+      button {
+        padding: 12px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      .result {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      ul {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Chit Fund Picker</h1>
+
+    <button onclick="pickChit()">Pick Next Chit</button>
+
+    <div class="result" id="result"></div>
+
+    <ul id="history"></ul>
+
+    <script>
+      // 🔽 Replace with your actual 9 names
+      let names = [
+        "Jawwad",
+        "Imran1",
+        "Imran2",
+        "Imran3",
+        "Abdiya1",
+        "Abdiya2",
+        "Farhan1",
+        "Farhan2",
+        "Farhan3",
+      ];
+
+      let month = 1;
+
+      function pickChit() {
+        if (names.length === 0) {
+          document.getElementById("result").innerText =
+            "All chits have been picked.";
+          return;
+        }
+
+        const randomIndex = Math.floor(Math.random() * names.length);
+        const pickedName = names.splice(randomIndex, 1)[0];
+
+        document.getElementById(
+          "result"
+        ).innerText = `Month ${month}: ${pickedName} gets $9,000`;
+
+        const history = document.getElementById("history");
+        const li = document.createElement("li");
+        li.innerText = `Month ${month}: ${pickedName}`;
+        history.appendChild(li);
+
+        month++;
+      }
+    </script>
+  </body>
+</html>
