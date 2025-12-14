@@ -126,55 +126,11 @@
     "Farhan3"
   ];
 
+  const months = ["February", "March", "April", "May", "June", "July", "August", "September", "October"];
+
   let names = [...namesList];
   let history = [];
-  let month = 1;
+  let monthIndex = 0;
 
   function pickChit() {
-    if (names.length === 0) {
-      const resultDiv = document.getElementById("result");
-      resultDiv.innerText = "All chits have been picked!";
-      resultDiv.classList.add("show");
-      return;
-    }
-
-    const index = Math.floor(Math.random() * names.length);
-    const picked = names.splice(index, 1)[0];
-    history.push({ month, name: picked });
-
-    // Show result with animation
-    const resultDiv = document.getElementById("result");
-    resultDiv.innerText = `Month ${month}: ${picked} gets $9,000`;
-    resultDiv.classList.remove("show");
-    void resultDiv.offsetWidth; // trigger reflow
-    resultDiv.classList.add("show");
-
-    // Add to history
-    const historyList = document.getElementById("history");
-    const li = document.createElement("li");
-    li.innerText = `Month ${month}: ${picked}`;
-    historyList.appendChild(li);
-
-    // Confetti effect
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
-
-    month++;
-  }
-
-  function resetPicker() {
-    names = [...namesList];
-    history = [];
-    month = 1;
-    document.getElementById("history").innerHTML = "";
-    const resultDiv = document.getElementById("result");
-    resultDiv.innerText = "";
-    resultDiv.classList.remove("show");
-  }
-</script>
-
-</body>
-</html>
+    if
